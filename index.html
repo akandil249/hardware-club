@@ -4,14 +4,20 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Hardware Club</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
 
+  <!-- Circuit canvas background -->
+  <canvas id="circuit-canvas"></canvas>
+
   <!-- NAV -->
-  <nav>
+  <nav id="nav">
     <div class="nav-inner">
-      <span class="logo">&#9113; Hardware Club</span>
+      <span class="logo"><span class="logo-bracket">[</span>HW<span class="logo-bracket">]</span> Hardware Club</span>
       <ul>
         <li><a href="#about">About</a></li>
         <li><a href="#projects">Projects</a></li>
@@ -24,81 +30,136 @@
   <!-- HERO -->
   <section class="hero">
     <div class="hero-content">
-      <h1>We Build Things.</h1>
-      <p>At the HHS Hardware Club, we design, wire, and build real hardware projects.</p>
-      <a href="#join" class="btn">Join the Club</a>
+      <div class="terminal-line">
+        <span class="terminal-prompt">~/hardware-club $</span>
+        <span class="terminal-cmd" id="typewriter"></span><span class="cursor">|</span>
+      </div>
+      <h1 class="hero-title">We Build <span class="gradient-text">Things.</span></h1>
+      <p class="hero-sub">At the HHS Hardware Club, we design, wire, and build real hardware projects.</p>
+      <div class="hero-actions">
+        <a href="#join" class="btn btn-primary">Join the Club</a>
+        <a href="#about" class="btn btn-ghost">Learn More</a>
+      </div>
     </div>
     <div class="hero-art">
-      <div class="circuit-grid"></div>
+      <div class="orb orb-1"></div>
+      <div class="orb orb-2"></div>
+      <div class="hero-badge">
+        <div class="badge-ring"></div>
+        <div class="badge-inner">
+          <span class="badge-label">EST.</span>
+          <span class="badge-year">2025</span>
+        </div>
+      </div>
     </div>
   </section>
 
   <!-- ABOUT -->
   <section id="about" class="section">
-    <h2>About Us</h2>
-    <div class="cards">
-      <div class="card">
-        <h3>What We Do</h3>
-        <p>We meet bi-weekly to work on electronics and embedded systems. No experience needed!</p>
-      </div>
-      <div class="card">
-        <h3>What You'll Learn</h3>
-        <p>Circuit design, Arduino & Raspberry Pi programming, and how to bring an idea from concept to prototype.</p>
-      </div>
-      <div class="card">
-        <h3>Competitions</h3>
-        <p>During the second semester, we hold a competition with teams working towards making the best project!</p>
+    <div class="section-inner">
+      <div class="section-label">// about</div>
+      <h2>About Us</h2>
+      <div class="cards">
+        <div class="card tilt-card">
+          <div class="card-number">01</div>
+          <h3>What We Do</h3>
+          <p>We meet bi-weekly to work on electronics and embedded systems. No experience needed!</p>
+          <div class="card-glow"></div>
+        </div>
+        <div class="card tilt-card">
+          <div class="card-number">02</div>
+          <h3>What You'll Learn</h3>
+          <p>Circuit design, Arduino & Raspberry Pi programming, and how to bring an idea from concept to prototype.</p>
+          <div class="card-glow"></div>
+        </div>
+        <div class="card tilt-card">
+          <div class="card-number">03</div>
+          <h3>Competitions</h3>
+          <p>During the second semester, we hold a competition with teams working towards making the best project!</p>
+          <div class="card-glow"></div>
+        </div>
       </div>
     </div>
   </section>
 
   <!-- PROJECTS -->
   <section id="projects" class="section alt">
-    <h2>Projects</h2>
-    <div class="no-projects">
-      <p>No projects yet; we're just getting started!</p>
-      <p>Projects kick off in the second semester. Check back then to see what we've been building.</p>
+    <div class="section-inner">
+      <div class="section-label">// projects</div>
+      <h2>Projects</h2>
+      <div class="no-projects">
+        <div class="no-projects-icon">
+          <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
+        </div>
+        <p>No projects yet &mdash; we're just getting started!</p>
+        <p>Projects kick off in the second semester. Check back then to see what we've been building.</p>
+      </div>
     </div>
   </section>
 
   <!-- OFFICERS -->
   <section id="members" class="section">
-    <h2>Officers</h2>
-    <div class="members-grid">
-      <div class="member">
-        <div class="avatar" style="background:#4f8ef7;">AK</div>
-        <h4>Ahmed Kandil</h4>
-        <p>President</p>
+    <div class="section-inner">
+      <div class="section-label">// officers</div>
+      <h2>Officers</h2>
+      <div class="members-grid">
+        <div class="member tilt-card">
+          <div class="avatar">AK</div>
+          <h4>Ahmed Kandil</h4>
+          <p>President</p>
+          <div class="card-glow"></div>
+        </div>
       </div>
     </div>
   </section>
 
   <!-- JOIN -->
   <section id="join" class="section alt">
-    <h2>Join Us</h2>
-    <p class="section-sub">Meetings are every <strong>[UNDECIDED]</strong> in <strong>Room [MR LEE'S MAYBE?]</strong>. All skill levels welcome.</p>
-    <form class="join-form" onsubmit="handleSubmit(event)">
-      <input type="text" id="f-name" name="name" placeholder="Your Name" required />
-      <input type="email" id="f-email" name="email" placeholder="School Email" required />
-      <select id="f-grade" name="grade">
-        <option value="">Grade Level</option>
-        <option>9th Grade</option>
-        <option>10th Grade</option>
-        <option>11th Grade</option>
-        <option>12th Grade</option>
-      </select>
-      <textarea id="f-experience" name="experience" placeholder="Any experience with electronics or programming? (optional)"></textarea>
-      <button type="submit" class="btn">Send Interest Form</button>
-    </form>
-    <div id="form-success" class="form-success" style="display:none;">
-      Thanks! Make sure to keep an eye on your email, as we will contact you there.
+    <div class="section-inner">
+      <div class="section-label">// join</div>
+      <h2>Join Us</h2>
+      <p class="section-sub">Meetings are every <strong>[UNDECIDED]</strong> in <strong>Room [MR LEE'S MAYBE?]</strong>. All skill levels welcome.</p>
+      <form class="join-form" onsubmit="handleSubmit(event)">
+        <div class="form-row">
+          <div class="form-field">
+            <label for="f-name">Name</label>
+            <input type="text" id="f-name" name="name" placeholder="Your Name" required />
+          </div>
+          <div class="form-field">
+            <label for="f-email">Email</label>
+            <input type="email" id="f-email" name="email" placeholder="School Email" required />
+          </div>
+        </div>
+        <div class="form-field">
+          <label for="f-grade">Grade Level</label>
+          <select id="f-grade" name="grade">
+            <option value="">Select grade</option>
+            <option>9th Grade</option>
+            <option>10th Grade</option>
+            <option>11th Grade</option>
+            <option>12th Grade</option>
+          </select>
+        </div>
+        <div class="form-field">
+          <label for="f-experience">Experience <span class="optional">(optional)</span></label>
+          <textarea id="f-experience" name="experience" placeholder="Any experience with electronics or programming?"></textarea>
+        </div>
+        <button type="submit" class="btn btn-primary">Send Interest Form</button>
+      </form>
+      <div id="form-success" class="form-success" style="display:none;">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+        Thanks! Make sure to keep an eye on your email, as we will contact you there.
+      </div>
     </div>
   </section>
 
   <!-- FOOTER -->
   <footer>
-    <p>&#9113; Hardware Club &mdash; Building the future, one circuit at a time.</p>
-    <p>Contact us: <a href="mailto:akandil249@student.fuhsd.org">akandil249@student.fuhsd.org</a></p>
+    <div class="footer-inner">
+      <span class="logo"><span class="logo-bracket">[</span>HW<span class="logo-bracket">]</span> Hardware Club</span>
+      <p>Building the future, one circuit at a time.</p>
+      <a href="mailto:akandil249@student.fuhsd.org">akandil249@student.fuhsd.org</a>
+    </div>
   </footer>
 
   <script src="app.js"></script>
