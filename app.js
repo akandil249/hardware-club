@@ -2,8 +2,8 @@
 (function () {
   const canvas = document.getElementById('circuit-canvas');
   const ctx = canvas.getContext('2d');
-  const ACCENT = '#4f8ef7';
-  const ACCENT2 = '#4fd9a8';
+  const ACCENT = '#d97706';
+  const ACCENT2 = '#f59e0b';
   let W, H, nodes, animId;
 
   function resize() {
@@ -47,7 +47,7 @@
     ctx.lineTo(mx, b.y);
     ctx.lineTo(b.x, b.y);
 
-    ctx.strokeStyle = `rgba(79,142,247,${alpha})`;
+    ctx.strokeStyle = `rgba(217,119,6,${alpha})`;
     ctx.lineWidth = 0.6;
     ctx.stroke();
   }
@@ -90,7 +90,7 @@ window.addEventListener('scroll', () => {
 /* ── Typewriter ── */
 (function () {
   const el = document.getElementById('typewriter');
-  const phrases = ['run build.sh', 'git commit -m "init"', 'flash firmware.bin', 'make hardware'];
+  const phrases = ['flash firmware.bin', 'analogWrite(9, 128)', 'volts: 3.29 V DC', 'solder joints: OK'];
   let pi = 0, ci = 0, deleting = false;
 
   function type() {
