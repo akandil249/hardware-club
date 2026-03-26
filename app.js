@@ -2,9 +2,11 @@
 (function () {
   const canvas = document.getElementById('circuit-canvas');
   const ctx = canvas.getContext('2d');
-  const ACCENT = '#d97706';
-  const ACCENT2 = '#f59e0b';
-  let W, H, nodes, animId;
+  const ACCENT = '#06b6d4';
+  const ACCENT2 = '#22d3ee';
+  let W, H, nodes, animId, mouseX = -999, mouseY = -999;
+
+  window.addEventListener('mousemove', e => { mouseX = e.clientX; mouseY = e.clientY; }, { passive: true });
 
   function resize() {
     W = canvas.width = window.innerWidth;
@@ -47,7 +49,7 @@
     ctx.lineTo(mx, b.y);
     ctx.lineTo(b.x, b.y);
 
-    ctx.strokeStyle = `rgba(217,119,6,${alpha})`;
+    ctx.strokeStyle = `rgba(6,182,212,${alpha})`;
     ctx.lineWidth = 0.6;
     ctx.stroke();
   }
@@ -59,6 +61,10 @@
     nodes.forEach(n => {
       n.x += n.vx;
       n.y += n.vy;
+      // subtle mouse repulsion
+      const mdx = n.x - mouseX, mdy = n.y - mouseY;
+      const md = Math.sqrt(mdx * mdx + mdy * mdy);
+      if (md < 90 && md > 0) { n.x += (mdx / md) * 0.7; n.y += (mdy / md) * 0.7; }
       if (n.x < 0 || n.x > W) n.vx *= -1;
       if (n.y < 0 || n.y > H) n.vy *= -1;
     });

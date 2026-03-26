@@ -13,6 +13,7 @@
 
   <!-- Circuit canvas background -->
   <canvas id="circuit-canvas"></canvas>
+  <div class="noise" aria-hidden="true"></div>
 
   <!-- NAV -->
   <nav id="nav">
@@ -40,6 +41,22 @@
         <a href="#join" class="btn btn-primary">Join the Club</a>
         <a href="#about" class="btn btn-ghost">Learn More</a>
       </div>
+      <div class="hero-stats">
+        <div class="hero-stat">
+          <span class="hero-stat-val">3</span>
+          <span class="hero-stat-label">Officers</span>
+        </div>
+        <div class="hero-stat-div"></div>
+        <div class="hero-stat">
+          <span class="hero-stat-val">Monthly</span>
+          <span class="hero-stat-label">Meetings</span>
+        </div>
+        <div class="hero-stat-div"></div>
+        <div class="hero-stat">
+          <span class="hero-stat-val">S1</span>
+          <span class="hero-stat-label">Room</span>
+        </div>
+      </div>
     </div>
     <div class="hero-art">
       <div class="orb orb-1"></div>
@@ -61,19 +78,28 @@
       <h2>About Us</h2>
       <div class="cards">
         <div class="card tilt-card">
-          <div class="card-number">01</div>
+          <div class="card-header">
+            <svg class="card-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><rect x="7" y="7" width="10" height="10" rx="1"/><line x1="7" y1="9.5" x2="4" y2="9.5"/><line x1="7" y1="12" x2="4" y2="12"/><line x1="7" y1="14.5" x2="4" y2="14.5"/><line x1="17" y1="9.5" x2="20" y2="9.5"/><line x1="17" y1="12" x2="20" y2="12"/><line x1="17" y1="14.5" x2="20" y2="14.5"/><line x1="9.5" y1="7" x2="9.5" y2="4"/><line x1="12" y1="7" x2="12" y2="4"/><line x1="14.5" y1="7" x2="14.5" y2="4"/><line x1="9.5" y1="17" x2="9.5" y2="20"/><line x1="12" y1="17" x2="12" y2="20"/><line x1="14.5" y1="17" x2="14.5" y2="20"/></svg>
+            <div class="card-number">01</div>
+          </div>
           <h3>What We Do</h3>
-          <p>We meet bi-weekly to work on electronics and embedded systems. No experience needed!</p>
+          <p>We meet monthly to work on electronics and embedded systems. No experience needed!</p>
           <div class="card-glow"></div>
         </div>
         <div class="card tilt-card">
-          <div class="card-number">02</div>
+          <div class="card-header">
+            <svg class="card-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+            <div class="card-number">02</div>
+          </div>
           <h3>What You'll Learn</h3>
           <p>Circuit design, Arduino & Raspberry Pi programming, and how to bring an idea from concept to prototype.</p>
           <div class="card-glow"></div>
         </div>
         <div class="card tilt-card">
-          <div class="card-number">03</div>
+          <div class="card-header">
+            <svg class="card-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M6 9H4.5a2.5 2.5 0 0 1 0-5H6"/><path d="M18 9h1.5a2.5 2.5 0 0 0 0-5H18"/><path d="M4 22h16"/><path d="M10 14.66V17c0 .55-.47.98-.97 1.21C7.85 18.75 7 20.24 7 22"/><path d="M14 14.66V17c0 .55.47.98.97 1.21C16.15 18.75 17 20.24 17 22"/><path d="M18 2H6v7a6 6 0 0 0 12 0V2Z"/></svg>
+            <div class="card-number">03</div>
+          </div>
           <h3>Competitions</h3>
           <p>During the second semester, we hold a competition with teams working towards making the best project!</p>
           <div class="card-glow"></div>
@@ -87,12 +113,18 @@
     <div class="section-inner">
       <div class="section-label">// projects</div>
       <h2>Projects</h2>
-      <div class="no-projects">
-        <div class="no-projects-icon">
-          <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="7" y="7" width="10" height="10" rx="1"/><line x1="7" y1="9.5" x2="4" y2="9.5"/><line x1="7" y1="12" x2="4" y2="12"/><line x1="7" y1="14.5" x2="4" y2="14.5"/><line x1="17" y1="9.5" x2="20" y2="9.5"/><line x1="17" y1="12" x2="20" y2="12"/><line x1="17" y1="14.5" x2="20" y2="14.5"/><line x1="9.5" y1="7" x2="9.5" y2="4"/><line x1="12" y1="7" x2="12" y2="4"/><line x1="14.5" y1="7" x2="14.5" y2="4"/><line x1="9.5" y1="17" x2="9.5" y2="20"/><line x1="12" y1="17" x2="12" y2="20"/><line x1="14.5" y1="17" x2="14.5" y2="20"/></svg>
+      <div class="terminal-block">
+        <div class="terminal-bar">
+          <div class="terminal-dots"><span></span><span></span><span></span></div>
+          <span class="terminal-filename">projects.sh</span>
         </div>
-        <p>No projects yet. We're just getting started!</p>
-        <p>Projects kick off in the second semester. Check back then to see what we've been building.</p>
+        <div class="terminal-body">
+          <div class="t-row"><span class="t-prompt">$</span> <span class="t-cmd">find ./projects --season current</span></div>
+          <div class="t-row t-out">→ Scanning directories<span class="t-blink">...</span></div>
+          <div class="t-row t-warn">→ 0 results found.</div>
+          <div class="t-row t-out t-gap">Projects boot in Semester 2. Stand by for transmissions.</div>
+          <div class="t-row"><span class="t-prompt">$</span> <span class="cursor">|</span></div>
+        </div>
       </div>
     </div>
   </section>
@@ -106,7 +138,19 @@
         <div class="member tilt-card">
           <div class="avatar">AK</div>
           <h4>Ahmed Kandil</h4>
-          <p>President</p>
+          <span class="role-badge">President</span>
+          <div class="card-glow"></div>
+        </div>
+        <div class="member tilt-card">
+          <div class="avatar">SV</div>
+          <h4>Sachit Vinodh</h4>
+          <span class="role-badge role-badge--green">Vice President</span>
+          <div class="card-glow"></div>
+        </div>
+        <div class="member tilt-card">
+          <div class="avatar">KJ</div>
+          <h4>Karthik Jonnalagadda</h4>
+          <span class="role-badge role-badge--purple">Secretary</span>
           <div class="card-glow"></div>
         </div>
       </div>
@@ -118,7 +162,7 @@
     <div class="section-inner">
       <div class="section-label">// join</div>
       <h2>Join Us</h2>
-      <p class="section-sub">Meetings are <strong>The last friday of each months</strong> in <strong>Room S1</strong>. All skill levels welcome.</p>
+      <p class="section-sub">Meetings are on the <strong>last friday of each month</strong> in <strong>Room S1</strong>. All skill levels are welcome.</p>
       <form class="join-form" onsubmit="handleSubmit(event)">
         <div class="form-row">
           <div class="form-field">
@@ -156,9 +200,23 @@
   <!-- FOOTER -->
   <footer>
     <div class="footer-inner">
-      <span class="logo"><span class="logo-bracket">[</span>HW<span class="logo-bracket">]</span> Hardware Club</span>
-      <p>Building the future, one circuit at a time.</p>
-      <a href="mailto:akandil249@student.fuhsd.org">akandil249@student.fuhsd.org</a>
+      <div class="footer-brand">
+        <span class="logo"><span class="logo-bracket">[</span>HW<span class="logo-bracket">]</span> Hardware Club</span>
+        <p class="footer-tagline">Building the future, one circuit at a time.</p>
+      </div>
+      <div class="footer-nav">
+        <a href="#about">About</a>
+        <a href="#projects">Projects</a>
+        <a href="#members">Officers</a>
+        <a href="#join">Join Us</a>
+      </div>
+      <div class="footer-contact">
+        <span class="footer-contact-label">// contact</span>
+        <a href="mailto:akandil249@student.fuhsd.org">akandil249@student.fuhsd.org</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>EST. 2026 · HHS Hardware Club</span>
     </div>
   </footer>
 
